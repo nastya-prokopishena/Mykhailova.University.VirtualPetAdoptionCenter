@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="6.0.27" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.17.0" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="2.17.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
@@ -16,5 +19,9 @@
     <ProjectReference Include="..\VirtualPetAdoptionCenter.Core\VirtualPetAdoptionCenter.Core.csproj" />
     <ProjectReference Include="..\VirtualPetAdoptionCenter.Models\VirtualPetAdoptionCenter.Models.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="start https://localhost:5183" />
+  </Target>
 
 </Project>
