@@ -23,5 +23,9 @@
   <ItemGroup>
     <ProjectReference Include="..\VirtualPetAdoptionCenter.Models\VirtualPetAdoptionCenter.Models.csproj" />
   </ItemGroup>
-
+	
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="start http://localhost:5000" />
+	</Target>
+	
 </Project>

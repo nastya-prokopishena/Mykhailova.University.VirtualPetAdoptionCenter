@@ -13,11 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\VirtualPetAdoptionCenter.Core\VirtualPetAdoptionCenter.Core.csproj" />
     <ProjectReference Include="..\VirtualPetAdoptionCenter.Models\VirtualPetAdoptionCenter.Models.csproj" />
   </ItemGroup>
