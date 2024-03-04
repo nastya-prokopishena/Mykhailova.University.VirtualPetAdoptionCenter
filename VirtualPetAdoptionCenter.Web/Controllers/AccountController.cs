@@ -1,24 +1,18 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using VirtualPetAdoptionCenter.Core;
+﻿using Microsoft.AspNetCore.Mvc;
 using VirtualPetAdoptionCenter.Core.Services;
+using VirtualPetAdoptionCenter.Models.RequestModels;
 
 namespace VirtualPetAdoptionCenter.Web.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-[Authorize]
 public class AccountController : ControllerBase
 {
-    private readonly VirtualPetAdoptionCenterDbContext dbContext;
-    private readonly IAccountService accountService;   
+    private readonly IAccountService _accountService;   
         
-    public AccountController(VirtualPetAdoptionCenterDbContext context, IAccountService accService)
+    public AccountController(IAccountService accService)
     {
-        dbContext = context;
-        accountService = accService;
-        var asd = dbContext.Users.FirstOrDefault();
+        _accountService = accService;
     }
 
     [HttpPost]
@@ -28,26 +22,18 @@ public class AccountController : ControllerBase
         // Реализуйте логику проверки логина и пароля, например, через сервис IAccountService
         // Верните результат в виде IActionResult
 
-       var result = await accountService.CheckUserExistsAsync(request.Login, request.Password);
+       var result = await _accountService.CheckUserExistsAsync(request.Login, request.Password);
 
-
-
-        return Ok(result);
+       return Ok();
     }
 
     [HttpPost]
     [Route(nameof(SignUp))]
-    public IActionResult SignUp([FromBody] LoginRequest request)
+    public IActionResult SignUp([FromForm] LoginRequest request)
     {
         // Реализуйте логику регистрации пользователя, например, через сервис IAccountService
         // Верните результат в виде IActionResult
         return Ok();
-    }
-
-    public class LoginRequest
-    {
-        public string Login { get; set; }
-        public string Password { get; set; }
     }
 
     [HttpGet]

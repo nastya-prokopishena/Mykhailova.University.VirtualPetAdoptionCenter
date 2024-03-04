@@ -26,7 +26,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
 
 			var newUser = new UserModel
 			{
-				Name = login,
+				Login = login,
 				Password = password
 			};
 
@@ -38,14 +38,14 @@ namespace VirtualPetAdoptionCenter.Core.Services
 
 		public async Task<bool> CheckUserExistsAsync(string login, string password)
 		{
-			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Name == login && u.Password == password);
+			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
 
 			return user != null;
 		}
 
 		private async Task<bool> UserExistsAsync(string login)
 		{
-			return await _dbContext.Users.AnyAsync(u => u.Name == login);
+			return await _dbContext.Users.AnyAsync(u => u.Login == login);
 		}
 	}
 }
