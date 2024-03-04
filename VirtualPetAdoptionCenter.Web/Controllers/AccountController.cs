@@ -19,21 +19,36 @@ public class AccountController : ControllerBase
     [Route(nameof(SignIn))]
     public async Task<IActionResult> SignIn([FromForm] LoginRequest request)
     {
-        // Реализуйте логику проверки логина и пароля, например, через сервис IAccountService
-        // Верните результат в виде IActionResult
-
        var result = await _accountService.CheckUserExistsAsync(request.Login, request.Password);
+        
+        if (result)
+        {           
+            return Ok("Account exists");
+        }
+        else
+        {         
+            return BadRequest("Invalid login or password");
+        }
 
-       return Ok();
+        //return Ok();
     }
 
     [HttpPost]
     [Route(nameof(SignUp))]
-    public IActionResult SignUp([FromForm] LoginRequest request)
+    public async Task <IActionResult> SignUp([FromForm] LoginRequest request)
     {
-        // Реализуйте логику регистрации пользователя, например, через сервис IAccountService
-        // Верните результат в виде IActionResult
-        return Ok();
+        var result = await _accountService.RegisterUserAsync(request.Login, request.Password);
+
+        if (result)
+        {
+            return Ok("Account created successfully");
+        }
+        else
+        {
+            return BadRequest("Account already exists");
+        }
+
+        //return Ok();
     }
 
     [HttpGet]

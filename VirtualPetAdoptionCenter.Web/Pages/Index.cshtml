@@ -6,11 +6,34 @@
 	ViewData["Title"] = "Login Page";
 }
 
+
 <head>
-    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
-<h2>Login</h2>
+<div id="notification">
+    @if (!String.IsNullOrEmpty(ViewBag.Message))
+    {
+        <p>@ViewBag.Message</p>
+    }
+</div>
+
+@*<div class="container">
+    <form method="post">
+        <h2>Вхід в акаунт</h2>
+        <input type="email" placeholder="Електронна пошта" required>
+        <input type="password" placeholder="Пароль" required>
+        <button type="submit">Увійти</button>
+    </form>
+    <form method="post" class="form">
+        <h2>Реєстрація</h2>
+        <input type="email" placeholder="Електронна пошта" required>
+        <input type="password" placeholder="Пароль" required>
+        <button type="submit">Зареєструватися</button>
+    </form>
+</div>
+*@
 
 <form method="post">
     <div>
