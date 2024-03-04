@@ -17,6 +17,77 @@ html {
   min-height: 100%;
 }
 
+
+
 body {
-  margin-bottom: 60px;
+    background-color: #f5f5f5; /* светло-серый фон */
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* белый фон контейнера */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* тень контейнера */
+}
+
+    .login-container h2 {
+        color: #2ecc71; /* светло-зеленый/м€тный цвет текста */
+    }
+
+    .login-container label {
+        display: block;
+        margin: 10px 0;
+        color: #333; /* черный текст дл€ меток */
+    }
+
+    .login-container input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd; /* светло-сера€ рамка дл€ полей ввода */
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .login-container button {
+        background-color: #2ecc71; /* светло-зеленый/м€тный цвет кнопок */
+        color: #fff; /* белый текст на кнопках */
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .login-container button:hover {
+            background-color: #27ae60; /* темно-зеленый цвет при наведении */
+        }
+
+/* ƒополнительные стили дл€ всего сайта по теме Virtual Pet Adoption */
+.header {
+    background-color: #2ecc71; /* светло-зеленый/м€тный цвет верхней панели */
+    color: #fff; /* белый текст в верхней панели */
+    padding: 10px;
+    text-align: center;
+}
+
+.pet-card {
+    background-color: #fff; /* белый фон карточек */
+    border: 1px solid #ddd; /* светло-сера€ рамка карточек */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* тень карточек */
+}
+
+.footer {
+    background-color: #2ecc71; /* светло-зеленый/м€тный цвет нижней панели */
+    color: #fff; /* белый текст в нижней панели */
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

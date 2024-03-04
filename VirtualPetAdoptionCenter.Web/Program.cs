@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using VirtualPetAdoptionCenter.Core;
+using VirtualPetAdoptionCenter.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,9 @@ builder.Services.AddSwaggerGen();
 
 string connection = builder.Configuration.GetConnectionString("VirtualPetAdoptionCenterDb");
 builder.Services.AddDbContext<VirtualPetAdoptionCenterDbContext>(options => options.UseSqlServer(connection));
+
+
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
