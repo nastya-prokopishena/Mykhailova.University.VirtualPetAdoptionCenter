@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VirtualPetAdoptionCenter.Core.Services;
 using VirtualPetAdoptionCenter.Models.RequestModels;
 
@@ -51,9 +52,10 @@ public class AccountController : ControllerBase
         //return Ok();
     }
 
-    [HttpGet]
-    [Route(nameof(Login))]
-    public IActionResult Login()
+    [HttpPost]
+    [Route(nameof(SignInMicrosoft))]
+    [Authorize]
+    public IActionResult SignInMicrosoft()
     {
        if (User.Identity?.IsAuthenticated != null)
        {
