@@ -1,8 +1,8 @@
 
-##Name of Project:
+## Name of Project:
 Virtual Pet Adoption Center
 
-##Description:
+## Description:
 The Virtual Pet Adoption Center is an online platform where users can adopt and care for digital pets virtually. Users can interact with their pets by feeding, grooming, and engaging in various activities. The platform aims to provide a realistic and engaging experience for users who want to experience the joys of pet ownership without the responsibilities of a physical pet.
 
 ## Author
