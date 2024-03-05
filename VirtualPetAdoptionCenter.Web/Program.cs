@@ -39,10 +39,10 @@ builder.Services.AddDbContext<VirtualPetAdoptionCenterDbContext>(options => opti
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEncryption, Encryption>();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication()
     .AddGoogle(googleOptions =>
     {
-        
+        googleOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         googleOptions.ClientId = "626765526510-8r5dmafp616hbsjr47ui2hrj102o4ste.apps.googleusercontent.com";
         googleOptions.ClientSecret = "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";
         googleOptions.CallbackPath = "/account/GoogleLoginCallback";
