@@ -7,7 +7,7 @@ using VirtualPetAdoptionCenter.Models.Account;
 namespace VirtualPetAdoptionCenter.Web.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("Index")]
     public class AuthorizationController : ControllerBase
     {
         public UserAzureAD GetUserOnAzureAd(ClaimsPrincipal user)
@@ -27,5 +27,8 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
             // }
             return null;
         }
+
+        //
+
     }
 }
