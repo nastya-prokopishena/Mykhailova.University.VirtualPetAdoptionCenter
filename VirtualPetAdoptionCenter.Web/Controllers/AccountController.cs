@@ -36,9 +36,7 @@ public class AccountController : ControllerBase
         return Challenge(authenticationProperties, "Google");
     }
 
-    [HttpGet]
-    [Route(nameof(GoogleLoginCallback))]
-    [AllowAnonymous]
+    [HttpGet(Name = "GoogleLoginCallback")]
     public async Task<IActionResult> GoogleLoginCallback()
     {
         var authenticateResult = await HttpContext.AuthenticateAsync("Google");
