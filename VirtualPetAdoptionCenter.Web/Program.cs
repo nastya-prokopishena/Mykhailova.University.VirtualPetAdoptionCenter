@@ -37,19 +37,7 @@ builder.Services.AddDbContext<VirtualPetAdoptionCenterDbContext>(options => opti
 
 
 builder.Services.AddScoped<IAccountService, AccountService>();
-
-/*builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = "Google";
-})
-.AddCookie()
-.AddGoogle("Google", options =>
-{
-    options.ClientId = "626765526510-8r5dmafp616hbsjr47ui2hrj102o4ste.apps.googleusercontent.com";
-    options.ClientSecret = "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";
-});*/
+builder.Services.AddScoped<IEncryption, Encryption>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddGoogle(googleOptions =>
