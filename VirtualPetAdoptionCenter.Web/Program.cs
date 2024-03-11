@@ -35,10 +35,9 @@ builder.Services.AddSwaggerGen();
 string connection = builder.Configuration.GetConnectionString("VirtualPetAdoptionCenterDb");
 builder.Services.AddDbContext<VirtualPetAdoptionCenterDbContext>(options => options.UseSqlServer(connection));
 
-// Додаємо реєстрацію для IEmailService та EmailService
+builder.Services.AddScoped<IPetService, PetService>();
+
 builder.Services.AddScoped<IEmailService, EmailService>();
-
-
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEncryption, Encryption>();
 

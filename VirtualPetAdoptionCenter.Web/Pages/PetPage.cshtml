@@ -1,0 +1,26 @@
+﻿@page
+@using VirtualPetAdoptionCenter.Models.Account;
+@model List<PetModel>
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/PetStyle.css" />
+</head>
+
+<section class="articles">
+    @foreach (var pet in Model)
+    {
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="@pet.Image" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>@pet.Name</h2>
+                    <p>@pet.Description</p>
+                </div>
+            </div>
+        </article>
+    }
+</section>

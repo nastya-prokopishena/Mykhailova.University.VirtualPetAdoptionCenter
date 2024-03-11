@@ -18,4 +18,5 @@ public class VirtualPetAdoptionCenterDbContext : DbContext
     }
 
     public DbSet<UserModel> Users { get; set; }
+    public DbSet<PetModel> Pets { get; set; }
 }
