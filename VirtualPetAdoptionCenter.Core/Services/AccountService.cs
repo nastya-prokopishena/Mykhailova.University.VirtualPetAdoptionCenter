@@ -13,11 +13,13 @@ namespace VirtualPetAdoptionCenter.Core.Services
     {
 		private readonly VirtualPetAdoptionCenterDbContext _dbContext;
         private readonly IEncryption encryptionService;
+        private readonly IEmailService _emailService;
 
-        public AccountService(VirtualPetAdoptionCenterDbContext dbContext,IEncryption encryptionService)
+        public AccountService(VirtualPetAdoptionCenterDbContext dbContext,IEncryption encryptionService, IEmailService emailService)
 		{
 			_dbContext = dbContext;
-			this.encryptionService = encryptionService;
+            _emailService = emailService;
+            this.encryptionService = encryptionService;
 		}
 
 		public async Task<bool> RegisterUserAsync(string login, string password, AuthType authType)
@@ -36,6 +38,10 @@ namespace VirtualPetAdoptionCenter.Core.Services
 
 			_dbContext.Users.Add(newUser);
 			await _dbContext.SaveChangesAsync();
+
+            _emailService.SendRegistrationEmail(login);
+
+
             return true;
         }
 
