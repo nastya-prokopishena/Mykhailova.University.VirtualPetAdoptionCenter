@@ -57,7 +57,7 @@ public class AccountController : ControllerBase
 
         var user = await _accountService.CheckUserExistsAsync(email, "", AuthType.Google);
 
-        if (user == null)
+        if (user != null)
         {
             HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
 
@@ -65,7 +65,7 @@ public class AccountController : ControllerBase
         }
         else
         {
-            var registrationResult = await _accountService.RegisterUserAsync(email, "", AuthType.Google);
+            user = await _accountService.RegisterUserAsync(email, "", AuthType.Google);
 
             if (user != null)
             {

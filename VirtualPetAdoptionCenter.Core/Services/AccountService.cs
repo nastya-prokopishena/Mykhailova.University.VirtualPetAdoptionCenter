@@ -13,52 +13,46 @@ namespace VirtualPetAdoptionCenter.Core.Services
 	public class AccountService : IAccountService
     {
 		private readonly VirtualPetAdoptionCenterDbContext _dbContext;
-        private readonly IEncryption encryptionService;
+        private readonly IEncryption _encryptionService;
         private readonly IEmailService _emailService;
 
         public AccountService(VirtualPetAdoptionCenterDbContext dbContext,IEncryption encryptionService, IEmailService emailService)
 		{
 			_dbContext = dbContext;
             _emailService = emailService;
-            this.encryptionService = encryptionService;
+            this._encryptionService = encryptionService;
 		}
 
 		public async Task<UserModel> RegisterUserAsync(string login, string password, AuthType authType)
 		{
-            if (await UserExistsAsync(login) == null)
+			var user = await CheckUserExistsAsync(login, password, authType);
+			
+            if ( user != null)
 			{
-				return null;
+				return user;
 			}
 
 			var newUser = new UserModel
 			{
 				Login = login,
-				Password = encryptionService.Encrypt(password),
+				Password = _encryptionService.Encrypt(password),
                 AuthType = authType.ToString()
             };
 
             _dbContext.Users.Add(newUser);
             await _dbContext.SaveChangesAsync();
             _emailService.SendRegistrationEmail(login);
-            var user = _dbContext.Users.FirstOrDefault(x => x.Login == login);
-
+            user = await CheckUserExistsAsync(login, password, authType);
 
             return user;
         }
 
 		public async Task<UserModel> CheckUserExistsAsync(string login, string password, AuthType authType)
 		{
-			password = encryptionService.Encrypt(password);
+			password = _encryptionService.Encrypt(password);
 			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password && u.AuthType == authType.ToString());
 
 			return user;
-		}
-
-		private async Task<UserModel> UserExistsAsync(string login)
-		{
-			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login);
-
-            return user;
 		}
 	}
 }
