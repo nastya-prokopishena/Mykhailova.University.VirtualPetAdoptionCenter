@@ -13,13 +13,5 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
         {
             _petService = petService;
         }
-
-        [HttpGet]
-        [Route(nameof(AllPets))]
-        public IActionResult AllPets()
-        {
-            var allPets = _petService.GetAllPets();
-            return View(allPets);
-        }
     }
 }

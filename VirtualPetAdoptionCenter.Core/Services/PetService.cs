@@ -18,16 +18,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
 
         public List<PetModel> GetAllPets()
         {
-            try
-            {
-                return _dbContext.Pets.ToList();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            return _dbContext.Pets.ToList();
         }
     }
 }

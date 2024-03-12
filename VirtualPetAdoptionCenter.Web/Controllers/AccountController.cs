@@ -111,6 +111,7 @@ public class AccountController : ControllerBase
 
     [HttpPost]
     [Route(nameof(SignInMicrosoft))]
+    [Authorize]
     public async Task<IActionResult> SignInMicrosoft()
     {
         if (User.Identity?.IsAuthenticated != null)

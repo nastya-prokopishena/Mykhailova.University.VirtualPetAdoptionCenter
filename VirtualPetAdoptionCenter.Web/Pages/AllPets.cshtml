@@ -1,15 +1,13 @@
 ﻿@page
-@using VirtualPetAdoptionCenter.Models.Account;
-@model List<PetModel>
-@{
-}
+@model VirtualPetAdoptionCenter.Web.Pages.AllPetsModel
+
 
 <head>
     <link rel="stylesheet" href="~/css/PetStyle.css" />
 </head>
 
 <section class="articles">
-    @foreach (var pet in Model)
+    @foreach (var pet in Model.Pets)
     {
         <article>
             <div class="article-wrapper">
