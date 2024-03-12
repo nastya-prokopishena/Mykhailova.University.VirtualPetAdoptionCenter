@@ -17,6 +17,9 @@
                 <div class="article-body">
                     <h2>@pet.Name</h2>
                     <p>@pet.Description</p>
+                    <form method="post">
+                        <button type="submit" formaction="/Pet/Adopt" id="petId" name="@pet.Id">Adopt this Pet</button>
+                    </form>
                 </div>
             </div>
         </article>

@@ -11,5 +11,6 @@ namespace VirtualPetAdoptionCenter.Core.Services
     public interface IPetService
     {
         List<PetModel> GetAllPets();
+        void AdoptPet(int petId, int userId);
     }
 }
