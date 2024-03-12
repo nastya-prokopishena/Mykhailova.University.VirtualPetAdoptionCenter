@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using VirtualPetAdoptionCenter.Core;
 using VirtualPetAdoptionCenter.Core.Services;
 using VirtualPetAdoptionCenter.Models.NewFolder1;
 using VirtualPetAdoptionCenter.Models.RequestModels;
@@ -54,19 +55,23 @@ public class AccountController : ControllerBase
             return BadRequest("Invalid user claim");
         }
 
-        var result = await _accountService.CheckUserExistsAsync(email, "", AuthType.Google);
+        var user = await _accountService.CheckUserExistsAsync(email, "", AuthType.Google);
 
-        if (result)
+        if (user == null)
         {
-            return Ok("Account already exists");
+            HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
+
+            return RedirectToPage("/AllPets");
         }
         else
         {
             var registrationResult = await _accountService.RegisterUserAsync(email, "", AuthType.Google);
 
-            if (registrationResult)
+            if (user != null)
             {
-                return Ok("Account created successfully");
+                HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
+
+                return RedirectToPage("/AllPets"); 
             }
             else
             {
@@ -80,11 +85,12 @@ public class AccountController : ControllerBase
     [Route(nameof(SignIn))]
     public async Task<IActionResult> SignIn([FromForm] LoginRequest request)
     {
-        var result = await _accountService.CheckUserExistsAsync(request.Login, request.Password, AuthType.Default);
+        var user = await _accountService.CheckUserExistsAsync(request.Login, request.Password, AuthType.Default);
 
-        if (result)
+        if (user != null)
         {
-            return Ok("Account exists");
+            HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
+            return RedirectToPage("/AllPets"); // Redirect to AllPets action
         }
         else
         {
@@ -96,11 +102,12 @@ public class AccountController : ControllerBase
     [Route(nameof(SignUp))]
     public async Task<IActionResult> SignUp([FromForm] LoginRequest request)
     {
-        var result = await _accountService.RegisterUserAsync(request.Login, request.Password, AuthType.Default);
+        var user = await _accountService.RegisterUserAsync(request.Login, request.Password, AuthType.Default);
 
-        if (result)
+        if (user != null)
         {
-            return Ok("Account created successfully");
+            HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
+            return RedirectToPage("/AllPets");
         }
         else
         {
@@ -125,19 +132,21 @@ public class AccountController : ControllerBase
                 return BadRequest("Invalid user claim");
             }
             
-            var result = await _accountService.CheckUserExistsAsync(email, "", AuthType.Microsoft);
+            var user = await _accountService.CheckUserExistsAsync(email, "", AuthType.Microsoft);
 
-            if (result)
+            if (user != null)
             {
-                return Ok("Account already exists");
+                HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
+                return RedirectToPage("/AllPets");
             }
             else
             {
-                var registrationResult = await _accountService.RegisterUserAsync(email, "", AuthType.Microsoft);
+                var registeredUser = await _accountService.RegisterUserAsync(email, "", AuthType.Microsoft);
 
-                if (registrationResult)
+                if (registeredUser != null)
                 {
-                    return Ok("Account created successfully");
+                    HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
+                    return RedirectToPage("/AllPets");
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,11 @@ namespace VirtualPetAdoptionCenter.Core.Services
             this.encryptionService = encryptionService;
 		}
 
-		public async Task<bool> RegisterUserAsync(string login, string password, AuthType authType)
+		public async Task<UserModel> RegisterUserAsync(string login, string password, AuthType authType)
 		{
-			if (await UserExistsAsync(login))
+            if (await UserExistsAsync(login) == null)
 			{
-				return false;
+				return null;
 			}
 
 			var newUser = new UserModel
@@ -36,26 +37,28 @@ namespace VirtualPetAdoptionCenter.Core.Services
                 AuthType = authType.ToString()
             };
 
-			_dbContext.Users.Add(newUser);
-			await _dbContext.SaveChangesAsync();
-
+            _dbContext.Users.Add(newUser);
+            await _dbContext.SaveChangesAsync();
             _emailService.SendRegistrationEmail(login);
+            var user = _dbContext.Users.FirstOrDefault(x => x.Login == login);
 
 
-            return true;
+            return user;
         }
 
-		public async Task<bool> CheckUserExistsAsync(string login, string password, AuthType authType)
+		public async Task<UserModel> CheckUserExistsAsync(string login, string password, AuthType authType)
 		{
 			password = encryptionService.Encrypt(password);
 			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password && u.AuthType == authType.ToString());
 
-			return user != null;
+			return user;
 		}
 
-		private async Task<bool> UserExistsAsync(string login)
+		private async Task<UserModel> UserExistsAsync(string login)
 		{
-			return await _dbContext.Users.AnyAsync(u => u.Login == login);
+			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login);
+
+            return user;
 		}
 	}
 }

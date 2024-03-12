@@ -50,6 +50,12 @@ builder.Services.AddAuthentication()
         googleOptions.CallbackPath = "/account/GoogleLoginCallback";
     });
 
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".VirtualPetAdoptionCenter.Session";
+    options.IdleTimeout = TimeSpan.FromDays(1);
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -64,6 +70,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();
