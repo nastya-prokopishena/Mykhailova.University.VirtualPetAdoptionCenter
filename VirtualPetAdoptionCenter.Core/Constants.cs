@@ -8,5 +8,5 @@ namespace VirtualPetAdoptionCenter.Core
 {
     public static class Constants
     {
-        public const string UserCookieKey = "UserId";    }
+        public const string UserCookieKey = "UserId";      }
 }
