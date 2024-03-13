@@ -21,3 +21,10 @@ Add your project documentation here.
 - Create initial database schema for user accounts and pet information.✔️
 - Develop landing page and user dashboard UI components.✔️
 - Write unit tests for user authentication functionality.
+
+### Week 2:
+- Implement virtual pet adoption feature.✔️
+- Integrate email sending functionality for welcome messages upon successful registration.✔️
+- Design and implement feeding and nutrition features for virtual pets.
+- Set up continuous integration and continuous delivery pipeline in Azure DevOps.
+- Write unit tests for virtual pet adoption and feeding functionality.
