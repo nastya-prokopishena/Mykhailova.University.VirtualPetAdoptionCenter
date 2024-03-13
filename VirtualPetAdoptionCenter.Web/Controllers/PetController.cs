@@ -25,6 +25,7 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
             _petService.AdoptPet(petId, userId.Value);
             return RedirectToPage("/AllPets");
         }
+     
     }
 }
 

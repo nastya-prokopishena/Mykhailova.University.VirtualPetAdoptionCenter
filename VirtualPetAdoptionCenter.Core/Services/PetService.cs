@@ -31,5 +31,9 @@ namespace VirtualPetAdoptionCenter.Core.Services
                 _dbContext.SaveChanges();
             }
         }
-    }
+        public List<PetModel> GetPetsByUserId(int userId)
+        {
+            return _dbContext.Pets.Where(p => p.UserId == userId).ToList();
+        }
+    }   
 }
