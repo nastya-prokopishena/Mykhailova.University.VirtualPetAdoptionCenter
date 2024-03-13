@@ -35,5 +35,16 @@ namespace VirtualPetAdoptionCenter.Core.Services
         {
             return _dbContext.Pets.Where(p => p.UserId == userId).ToList();
         }
+
+        public void FeedPet(int petId)
+        {
+            var pet = _dbContext.Pets.FirstOrDefault(x => x.Id == petId);
+            
+            if (pet != null)
+            {
+                pet.FeedCount = pet.FeedCount == null ? 1 : ++pet.FeedCount;
+                _dbContext.SaveChanges();
+            }
+        }
     }   
 }

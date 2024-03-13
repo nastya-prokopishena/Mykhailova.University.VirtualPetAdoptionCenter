@@ -13,5 +13,6 @@ namespace VirtualPetAdoptionCenter.Core.Services
         List<PetModel> GetAllPets();
         void AdoptPet(int petId, int userId);
         List<PetModel> GetPetsByUserId(int userId);
+        void FeedPet(int petId);
     }
 }

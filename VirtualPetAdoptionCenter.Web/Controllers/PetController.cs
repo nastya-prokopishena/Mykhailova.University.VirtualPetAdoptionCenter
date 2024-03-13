@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web;
-using System.Reflection.Metadata;
-using VirtualPetAdoptionCenter.Core;
 using VirtualPetAdoptionCenter.Core.Services;
 
 namespace VirtualPetAdoptionCenter.Web.Controllers
@@ -25,7 +22,14 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
             _petService.AdoptPet(petId, userId.Value);
             return RedirectToPage("/AllPets");
         }
-     
+        
+        [HttpPost]
+        [Route(nameof(FeedPet))]
+        public IActionResult FeedPet([FromForm]int petId)
+        {
+            _petService.FeedPet(petId);
+            return RedirectToPage("/MyPets");
+        }
     }
 }
 

@@ -27,6 +27,15 @@
                 <div class="article-body">
                     <h2>@pet.Name</h2>
                     <p>@pet.Description</p>
+                    @{
+                        if(pet.FeedCount != null)
+                        {
+                            <p>Pet fed @pet.FeedCount times</p>
+                        }
+                    }
+                    <form method="post">
+                        <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id">Feed @pet.Name</button>
+                    </form>
                 </div>
             </div>
         </article>
