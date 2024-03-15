@@ -34,7 +34,13 @@
                         }
                     }
                     <form method="post">
-                        <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id">Feed @pet.Name</button>
+                        <label for="foodType">Select food type for @pet.Name:</label>
+                        <select name="foodType" id="foodType">
+                            <option value="water">Water</option>
+                            <option value="food">Food</option>
+                            <option value="treat">Treat</option>
+                        </select>
+                        <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id" class="feed-button" style="margin-top:30px">Feed @pet.Name</button>
                     </form>
                 </div>
             </div>

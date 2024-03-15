@@ -178,6 +178,15 @@ nav {
                 nav ul li a:hover {
                     text-decoration: underline;
                 }
+.feed-button {
+    padding: 10px 20px;
+    background-color: #333; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 
-
-
+    .feed-button:hover {
+        background-color: #45a049; /* колір фону при наведенні курсора */
+    }
