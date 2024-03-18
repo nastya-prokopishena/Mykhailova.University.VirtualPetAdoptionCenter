@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using VirtualPetAdoptionCenter.Models.Account;
 
 namespace VirtualPetAdoptionCenter.Core;
@@ -19,4 +20,5 @@ public class VirtualPetAdoptionCenterDbContext : DbContext
 
     public DbSet<UserModel> Users { get; set; }
     public DbSet<PetModel> Pets { get; set; }
+    public DbSet<GroomingModel> Groom { get; set; }
 }

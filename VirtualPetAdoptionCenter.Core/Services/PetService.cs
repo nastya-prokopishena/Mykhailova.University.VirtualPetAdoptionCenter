@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VirtualPetAdoptionCenter.Models.Account;  
-
+using VirtualPetAdoptionCenter.Models.Account;
+using VirtualPetAdoptionCenter.Models.Enums;
 
 namespace VirtualPetAdoptionCenter.Core.Services
 {
@@ -36,15 +36,48 @@ namespace VirtualPetAdoptionCenter.Core.Services
             return _dbContext.Pets.Where(p => p.UserId == userId).ToList();
         }
 
+        public PetModel GetPetById(int petId)
+        {
+            return _dbContext.Pets.FirstOrDefault(p => p.Id == petId);
+        }
+
         public void FeedPet(int petId)
         {
             var pet = _dbContext.Pets.FirstOrDefault(x => x.Id == petId);
-            
+
             if (pet != null)
             {
                 pet.FeedCount = pet.FeedCount == null ? 1 : ++pet.FeedCount;
                 _dbContext.SaveChanges();
             }
         }
-    }   
+        
+        public void UpdateGroomingTime(int petId, GroomType groomType)
+        {
+            var record = _dbContext.Groom.FirstOrDefault(x => x.PetId == petId);
+            record ??= new GroomingModel();
+
+            switch (groomType)
+            {
+                case GroomType.TrimNailsTime:
+                    record.TrimNailsTime = DateTime.Now;
+                    break;
+                case GroomType.WashTime:
+                    record.WashTime = DateTime.Now;
+                    break;
+                case GroomType.BrushTime:
+                    record.BrushTime = DateTime.Now;
+                    break;
+                default:
+                    // 
+                    break;
+            }
+            if (record.Id == 0)
+            {
+                _dbContext.Groom.Add(record);
+            }
+
+            _dbContext.SaveChanges();
+        }
+    }
 }
