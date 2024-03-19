@@ -20,7 +20,6 @@
         content: "";
     }
 
-    /* basic article elements styling */
     article h2 {
         margin: 0 0 18px 0;
         font-family: "Bebas Neue", cursive;
@@ -69,7 +68,6 @@ article a {
         transition: all 0.3s;
     }
 
-/* using the has() relational pseudo selector to update our custom properties */
 article:has(:hover, :focus) {
     --img-scale: 1.1;
     --title-color: #28666e;
@@ -77,11 +75,6 @@ article:has(:hover, :focus) {
     --link-icon-opacity: 1;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
-
-
-/************************ 
-Generic layout (demo looks)
-**************************/
 
 *,
 *::before,
@@ -91,10 +84,9 @@ Generic layout (demo looks)
 
 body {
     margin: 0;
-    padding: 48px 0;
+    padding: 20px 0;
     font-family: "Figtree", sans-serif;
     font-size: 1.2rem;
-    line-height: 1.6rem;
     background-image: linear-gradient(45deg, #7c9885, #b5b682);
     min-height: 100vh;
 }
@@ -154,8 +146,8 @@ body {
 
 nav {
     background-color: #333;
-    padding: 10px 0;
-    margin-top: 0px; 
+    padding: 10px 50px;
+    margin-top: 10px; 
     margin-bottom: 40px;
 }
 
@@ -179,17 +171,18 @@ nav {
                     text-decoration: underline;
                 }
 
-.feed-button {
+.main-button {
     padding: 10px 20px;
-    background-color: #333; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-.feed-button:hover {
-        background-color: #45a049; /* колір фону при наведенні курсора */
+.main-button:hover {
+        background-color: #45a049;
     }
 
 .groom-button {
@@ -200,10 +193,21 @@ nav {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-bottom: 10px; /* Додайте відступ між кнопками */
+    margin-bottom: 10px;
 }
 
-    .groom-button:hover {
-        background-color: #45a049; /* змініть колір фону при наведенні курсора */
-    }
+.groom-button:hover {
+    background-color: #45a049;
+}
 
+.input-login-label
+{
+    color: #333;
+}
+
+.title-label{
+    font-size: 40px;
+    margin-left: 40px;
+    color: #333;
+    font-family: "Figtree", sans-serif;
+}

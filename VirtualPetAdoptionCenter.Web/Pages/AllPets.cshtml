@@ -1,11 +1,11 @@
 ﻿@page
 @model VirtualPetAdoptionCenter.Web.Pages.AllPetsModel
-@{
-}
 
 <head>
     <link rel="stylesheet" href="~/css/PetStyle.css" />
 </head>
+
+<label class="title-label"> All pets </label>
 
 <nav>
     <ul>
@@ -14,7 +14,6 @@
         <li><a href="/Account">Account</a></li>
     </ul>
 </nav>
-
 
 <section class="articles">
     @foreach (var pet in Model.Pets)
@@ -28,7 +27,7 @@
                     <h2>@pet.Name</h2>
                     <p>@pet.Description</p>
                     <form method="post">
-                        <button type="submit" formaction="/Pet/Adopt" id="petId" name="petId" value="@pet.Id">Adopt this Pet</button>
+                        <button type="submit" class="main-button" formaction="/Pet/Adopt" id="petId" name="petId" value="@pet.Id">Adopt this Pet</button>
                     </form>
                 </div>
             </div>
