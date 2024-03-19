@@ -192,3 +192,18 @@ nav {
         background-color: #45a049; /* колір фону при наведенні курсора */
     }
 
+.groom-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* Додайте відступ між кнопками */
+}
+
+    .groom-button:hover {
+        background-color: #45a049; /* змініть колір фону при наведенні курсора */
+    }
+

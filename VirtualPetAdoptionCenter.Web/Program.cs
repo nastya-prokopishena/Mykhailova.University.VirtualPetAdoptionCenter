@@ -40,6 +40,7 @@ builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEncryption, Encryption>();
+builder.Services.AddScoped<IGroomService, GroomService>();
 
 builder.Services.AddAuthentication()
     .AddGoogle(googleOptions =>

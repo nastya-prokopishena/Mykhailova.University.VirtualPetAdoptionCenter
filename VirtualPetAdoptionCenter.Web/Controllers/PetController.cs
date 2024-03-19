@@ -37,21 +37,17 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
         [Route(nameof(GroomPet))]
         public IActionResult GroomPet(int petId)
         {
-            return RedirectToPage("/PetDetails", new {petId = petId });
+            return RedirectToPage("/PetDetails", new { petId = petId });
         }
 
         [HttpPost]
-        public IActionResult AddGroomingTime([FromBody] GroomingModel request, GroomType groomType)
-        {
-            try
-            {
-                _petService.UpdateGroomingTime(request.PetId, groomType);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+        [Route(nameof(UpdateGroomingTime))]
+        public IActionResult UpdateGroomingTime([FromForm]int petId,[FromForm] GroomType groomType)
+        {    
+            _petService.UpdateGroomingTime(petId, groomType);
+            
+            return RedirectToAction(nameof(GroomPet), new { petId = petId });
+           
         }
     }
 }

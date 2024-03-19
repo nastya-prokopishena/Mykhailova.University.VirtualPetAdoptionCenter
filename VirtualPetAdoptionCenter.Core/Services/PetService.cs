@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VirtualPetAdoptionCenter.Models.Account;
+using VirtualPetAdoptionCenter.Models.DomainModels;
 using VirtualPetAdoptionCenter.Models.Enums;
 
 namespace VirtualPetAdoptionCenter.Core.Services
@@ -56,6 +56,17 @@ namespace VirtualPetAdoptionCenter.Core.Services
         {
             var record = _dbContext.Groom.FirstOrDefault(x => x.PetId == petId);
             record ??= new GroomingModel();
+            record.PetId = petId;
+/*
+            var brushtime = DateTbrushtime.TotalHours;
+            var trim = DateTbrushtime.TotalHours
+                 var brushtime = DateTbrushtime.TotalHours
+
+                new PetConditionModel()
+                {
+                    IsBrusehd = brushtim.TotalHours > 2
+                }*/
+
 
             switch (groomType)
             {
@@ -76,8 +87,41 @@ namespace VirtualPetAdoptionCenter.Core.Services
             {
                 _dbContext.Groom.Add(record);
             }
-
             _dbContext.SaveChanges();
         }
+
+        /*public PetConditionModel CheckPetCondition(int petId)
+        {        
+            var record = _dbContext.Groom.FirstOrDefault(x => x.PetId == petId);
+            var petCondition = new PetConditionModel();
+
+            if (record != null && (DateTime.Now - record.WashTime).TotalHours <= 2)
+            {
+                petCondition.IsWashed = true;
+            }
+            else
+            {
+                petCondition.IsWashed = false;
+            }
+
+            if (record != null && (DateTime.Now - record.TrimNailsTime).TotalHours <= 2)
+            {
+                petCondition.IsNailTrimmed = true;
+            }
+            else
+            {
+                petCondition.IsNailTrimmed = false;
+            }
+
+            if (record != null && (DateTime.Now - record.BrushTime).TotalHours <= 2)
+            {
+                petCondition.IsBrushed = true;
+            }
+            else
+            {
+                petCondition.IsBrushed = false;
+            }
+            return petCondition;
+        }*/
     }
 }

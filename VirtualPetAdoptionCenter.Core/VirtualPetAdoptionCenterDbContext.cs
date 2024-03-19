@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using VirtualPetAdoptionCenter.Models.Account;
+using VirtualPetAdoptionCenter.Models.DomainModels;
 
 namespace VirtualPetAdoptionCenter.Core;
 

@@ -40,10 +40,12 @@
                             <option value="food">Food</option>
                             <option value="treat">Treat</option>
                         </select>
-                        <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id" class="feed-button" style="margin-top:30px">Feed @pet.Name</button>
-                        <a href="@Url.Action("GroomPet","Pet",new {petId=pet.Id})">Grooming and Care</a>
-                        @* <button type="submit" formaction="@Url.Action("GroomPet","Pet",new {petId=pet.Id})" class="groom-button">Grooming and Care</button>*@
-                    </form>                               
+                        <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id" class="feed-button" style="margin-top:30px">Feed @pet.Name</button>                                           
+                    </form>
+                    <form method="get" action="@Url.Action("GroomPet", "Pet")">
+                        <input type="hidden" name="petId" value="@pet.Id" />                    
+                        <button type="submit" class="feed-button" >Grooming and Care</button>
+                    </form>
                 </div>
             </div>
         </article>

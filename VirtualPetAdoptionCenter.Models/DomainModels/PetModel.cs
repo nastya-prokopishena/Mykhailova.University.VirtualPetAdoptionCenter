@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VirtualPetAdoptionCenter.Models.Account
+namespace VirtualPetAdoptionCenter.Models.DomainModels
 {
     public class PetModel
     {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using VirtualPetAdoptionCenter.Models.Account;
 using VirtualPetAdoptionCenter.Models.Enums;
+using VirtualPetAdoptionCenter.Models.DomainModels;
 
 namespace VirtualPetAdoptionCenter.Core.Services
 {
