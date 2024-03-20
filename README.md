@@ -72,3 +72,10 @@ The application uses a relational database managed by Entity Framework. The `Vir
 - Design and implement feeding and nutrition features for virtual pets.✔️
 - Set up continuous integration and continuous delivery pipeline in Azure DevOps.
 - Write unit tests for virtual pet adoption and feeding functionality.
+
+### Week 3:
+- Develop grooming and care features for virtual pets. ✔️
+- Implement interactive activities such as playing, walking, and teaching tricks.
+- Create UI components for pet health monitoring and status display.
+- Write unit tests for grooming and interactive activity features.
+- Begin documentation for getting started and project architecture.✔️
