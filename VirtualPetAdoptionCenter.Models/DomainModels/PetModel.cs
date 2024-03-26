@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualPetAdoptionCenter.Models.Enums;
 
 namespace VirtualPetAdoptionCenter.Models.DomainModels
 {
@@ -15,5 +16,6 @@ namespace VirtualPetAdoptionCenter.Models.DomainModels
         public string Type { get; set; }
         public string Description { get; set; }
         public int? FeedCount { get; set; }
+        public string? EnvironmentType { get; set; }
     }
 }

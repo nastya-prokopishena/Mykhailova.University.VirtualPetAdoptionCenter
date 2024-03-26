@@ -45,10 +45,25 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
         public IActionResult UpdateGroomingTime([FromForm]int petId,[FromForm] GroomType groomType)
         {    
             _petService.UpdateGroomingTime(petId, groomType);
-            
             return RedirectToAction(nameof(GroomPet), new { petId = petId });
-           
         }
+
+        [HttpPost]
+        [Route(nameof(SetEnvironment))]
+        public IActionResult SetEnvironment([FromForm] int petId, [FromForm] PetEnvironmentType environment)
+        {
+            _petService.SetEnvironment(petId, environment);
+            return RedirectToPage("/MyPets");
+        }
+
+        [HttpGet]
+        [Route(nameof(GetEnvironment))]
+        public IActionResult GetEnvironment(int petId)
+        {
+            var environment = _petService.GetEnvironment(petId);
+            return Ok(environment);
+        }
+
     }
 }
 

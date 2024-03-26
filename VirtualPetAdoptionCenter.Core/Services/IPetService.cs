@@ -17,5 +17,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
         void FeedPet(int petId);
         PetModel GetPetById(int petId);
         void UpdateGroomingTime(int petId, GroomType groomType);
+        void SetEnvironment(int petId, PetEnvironmentType EnvironmentType);
+        PetEnvironmentType GetEnvironment(int petId);
     }
 }

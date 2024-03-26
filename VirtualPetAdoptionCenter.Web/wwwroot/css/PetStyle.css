@@ -211,3 +211,14 @@ nav {
     color: #333;
     font-family: "Figtree", sans-serif;
 }
+.garden .article-wrapper {
+    background-image: url('https://t4.ftcdn.net/jpg/02/54/00/69/360_F_254006997_xRASPFxpBNlNiC4yFQxj8z8nrmFgVyNI.jpg');
+}
+
+.home .article-wrapper {
+    background-image: url('https://images.squarespace-cdn.com/content/v1/5a4e83de9f8dceb1a2873aac/1589490209297-N0Y4JT5302VLSCC15J9B/IMG_6799.jpg');
+}
+
+.park .article-wrapper {
+    background-image: url('https://static4.depositphotos.com/1004999/269/i/950/depositphotos_2693490-stock-photo-beautiful-park.jpg');
+}
