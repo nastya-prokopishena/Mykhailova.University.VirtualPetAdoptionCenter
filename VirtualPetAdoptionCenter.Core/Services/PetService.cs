@@ -41,7 +41,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
             return _dbContext.Pets.FirstOrDefault(p => p.Id == petId);
         }
 
-        public void FeedPet(int petId)
+        public bool FeedPet(int petId)
         {
             var pet = _dbContext.Pets.FirstOrDefault(x => x.Id == petId);
 
@@ -49,7 +49,11 @@ namespace VirtualPetAdoptionCenter.Core.Services
             {
                 pet.FeedCount = pet.FeedCount == null ? 1 : ++pet.FeedCount;
                 _dbContext.SaveChanges();
+                return true;
+                
             }
+
+            return false;
         }
         
         public void UpdateGroomingTime(int petId, GroomType groomType)

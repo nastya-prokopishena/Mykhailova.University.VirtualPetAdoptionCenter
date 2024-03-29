@@ -22,4 +22,5 @@ public class VirtualPetAdoptionCenterDbContext : DbContext
     public DbSet<UserModel> Users { get; set; }
     public DbSet<PetModel> Pets { get; set; }
     public DbSet<GroomingModel> Groom { get; set; }
+    public DbSet<AchievementModel> Achievements { get; set; }
 }

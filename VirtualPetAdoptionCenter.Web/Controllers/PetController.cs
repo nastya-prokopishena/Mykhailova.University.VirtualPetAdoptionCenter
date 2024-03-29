@@ -11,9 +11,11 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
     public class PetController : Controller
     {
         private readonly IPetService _petService;
-        public PetController(IPetService petService)
+        private readonly IAchievementService _achievementTypeService;
+        public PetController(IPetService petService, IAchievementService achievementTypeService)
         {
             _petService = petService;
+            _achievementTypeService = achievementTypeService;
         }   
 
         [HttpPost]
@@ -22,14 +24,23 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
         {
             var userId = HttpContext.Session.GetInt32(Core.Constants.UserCookieKey);
             _petService.AdoptPet(petId, userId.Value);
+
+            _achievementTypeService.CheckAndAddAdoptAchievementAsync(userId.Value).GetAwaiter().GetResult();
+
             return RedirectToPage("/AllPets");
         }
-        
+
         [HttpPost]
         [Route(nameof(FeedPet))]
-        public IActionResult FeedPet([FromForm]int petId)
+        public async Task<IActionResult> FeedPet([FromForm] int petId, [FromForm] int userId)
         {
-            _petService.FeedPet(petId);
+            var isFeed = _petService.FeedPet(petId);
+
+            if(isFeed)
+            {
+                await _achievementTypeService.CheckAndAddHundredFeedAchievementAsync(userId);
+            }
+           
             return RedirectToPage("/MyPets");
         }
 
@@ -50,9 +61,15 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
 
         [HttpPost]
         [Route(nameof(SetEnvironment))]
-        public IActionResult SetEnvironment([FromForm] int petId, [FromForm] PetEnvironmentType environment)
+        public async Task<IActionResult> SetEnvironment([FromForm] int petId, [FromForm] PetEnvironmentType environment)
         {
             _petService.SetEnvironment(petId, environment);
+            var petEnvironment = _petService.GetEnvironment(petId);
+
+            if (petEnvironment == environment)
+            {
+                await _achievementTypeService.CheckAndAddEnvironmentAchievementAsync(petId);
+            }
             return RedirectToPage("/MyPets");
         }
 

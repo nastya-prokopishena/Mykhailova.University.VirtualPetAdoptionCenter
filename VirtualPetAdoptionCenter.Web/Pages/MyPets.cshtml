@@ -1,4 +1,6 @@
 ﻿@page
+@using VirtualPetAdoptionCenter.Core.Services;
+@using VirtualPetAdoptionCenter.Models.DomainModels;
 @model VirtualPetAdoptionCenter.Web.Pages.MyPetsModel
 
 <label class="title-label"> My pets </label>
@@ -7,13 +9,28 @@
     <link rel="stylesheet" href="~/css/PetStyle.css" />
 </head>
 
-<nav>
+<nav >
     <ul>
         <li><a href="/AllPets">Home</a></li>
         <li><a href="/MyPets">MyPets</a></li>
         <li><a href="/Account">Account</a></li>
+
+        @if (Model.Achievement != null && Model.Achievement.Feed == 1)
+        {
+            <img src="https://cdn-icons-png.flaticon.com/512/5863/5863510.png" alt="Feed Achievement" style=" width: 50px; height: 50px; margin-right: 15px; float: right;">
+        }
+        @if (Model.Achievement != null && Model.Achievement.Adopt == 1)
+        {
+            <img src="https://cdn-icons-png.flaticon.com/512/6410/6410115.png" alt="Adopt Achievement" style=" width: 50px; height: 50px; margin-right: 15px; float: right;">
+        }
+        @if (Model.Achievement != null && Model.Achievement.Environment == 1)
+        {
+            <img src="~/image/istockphoto-1199032156-612x612.jpg (1).png" alt="Environment Achievement" style=" width: 50px; height: 50px; margin-right: 15px; float: right;">
+        }
     </ul>
 </nav>
+
+
 
 <section class="articles">
     @foreach (var pet in Model.Pets)
@@ -45,15 +62,18 @@
                         {
                             <p>Pet fed @pet.FeedCount times</p>
                         }
-                    }
+                    }    
                     <form method="post">
+
+                        <input type="hidden" name="userId" value="@pet.UserId" />
+
                         <label for="foodType">Select food type for @pet.Name:</label>
                         <select name="foodType" id="foodType">
                             <option value="water">Water</option>
                             <option value="food">Food</option>
                             <option value="treat">Treat</option>
                         </select>
-                        <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id" class="main-button" style="margin-top:30px">Feed @pet.Name</button>                                           
+                          <button type="submit" formaction="/Pet/FeedPet" id="petId" name="petId" value="@pet.Id" class="main-button" style="margin-top:30px">Feed @pet.Name</button>                                           
                     </form>
                     <form method="get" action="@Url.Action("GroomPet", "Pet")">
                         <input type="hidden" name="petId" value="@pet.Id" />                    
@@ -61,6 +81,7 @@
                     </form>
                     <form method="post">
                         <input type="hidden" name="petId" value="@pet.Id" />
+                        
 
                         @if (pet.EnvironmentType != "Garden")
                         {
