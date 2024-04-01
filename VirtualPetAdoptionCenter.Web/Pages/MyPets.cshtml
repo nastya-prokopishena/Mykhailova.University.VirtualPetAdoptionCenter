@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="~/css/PetStyle.css" />
 </head>
 
-<nav >
+<nav style="height: 75px; padding: 25px 50px; margin-top: 49px; margin-bottom: 50px;">
     <ul>
         <li><a href="/AllPets">Home</a></li>
         <li><a href="/MyPets">MyPets</a></li>
         <li><a href="/Account">Account</a></li>
-
+    </ul>
         @if (Model.Achievement != null && Model.Achievement.Feed == 1)
         {
             <img src="https://cdn-icons-png.flaticon.com/512/5863/5863510.png" alt="Feed Achievement" style=" width: 50px; height: 50px; margin-right: 15px; float: right;">
@@ -26,8 +26,7 @@
         @if (Model.Achievement != null && Model.Achievement.Environment == 1)
         {
             <img src="~/image/istockphoto-1199032156-612x612.jpg (1).png" alt="Environment Achievement" style=" width: 50px; height: 50px; margin-right: 15px; float: right;">
-        }
-    </ul>
+        } 
 </nav>
 
 

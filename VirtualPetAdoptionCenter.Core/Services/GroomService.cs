@@ -1,18 +1,27 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualPetAdoptionCenter.Models;
 using VirtualPetAdoptionCenter.Models.DomainModels;
+using VirtualPetAdoptionCenter.Models.NewFolder1;
 
 namespace VirtualPetAdoptionCenter.Core.Services
 {
     public class GroomService : IGroomService
     {
         private readonly VirtualPetAdoptionCenterDbContext _dbContext;
-        public GroomService(VirtualPetAdoptionCenterDbContext dbContext)
+        private readonly IEmailService _emailService;
+        private readonly IAccountService _accountService;
+
+        public GroomService(VirtualPetAdoptionCenterDbContext dbContext, IEmailService emailService, IAccountService accountService)
         {
             _dbContext = dbContext;
+            _emailService = emailService;
+            _accountService = accountService;
         }
 
         public PetConditionModel CheckPetCondition(int petId)

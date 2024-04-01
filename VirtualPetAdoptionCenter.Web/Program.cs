@@ -43,6 +43,8 @@ builder.Services.AddScoped<IEncryption, Encryption>();
 builder.Services.AddScoped<IGroomService, GroomService>();
 builder.Services.AddScoped<IAchievementService,AchievementService>();
 
+/*builder.Services.AddScoped<INotificationService, EmailNotificationService() >;
+*/
 builder.Services.AddAuthentication()
     .AddGoogle(googleOptions =>
     {

@@ -41,7 +41,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
 
             _dbContext.Users.Add(newUser);
             await _dbContext.SaveChangesAsync();
-            _emailService.SendRegistrationEmail(login);
+            _emailService.SendEmail(login, Constants.RegistrationEmailTemplate);
             user = await CheckUserExistsAsync(login, password, authType);
 
             return user;
@@ -52,7 +52,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
 			password = _encryptionService.Encrypt(password);
 			var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password && u.AuthType == authType.ToString());
 
-			return user;
+            return user;
 		}
 	}
 }
