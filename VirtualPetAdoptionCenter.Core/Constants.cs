@@ -11,8 +11,9 @@ namespace VirtualPetAdoptionCenter.Core
         public const string UserCookieKey = "UserId";
 
         public static string RegistrationEmailTemplate = "Thank you for registering!";
-        public static string Washed = "Don't forget to wash your pet!";
-        public static string TrimNails = "Don't forget to trim your pet's nails!";
-        public static string Brush = "Don't forget to brush your pet's fur!";
+        public static string WashedEmail = "Don't forget to wash your pet!";
+        public static string TrimNailsEmail = "Don't forget to trim your pet's nails!";
+        public static string BrushEmail = "Don't forget to brush your pet's fur!";
+        public static string FeedEmail = "Don't forget to feed your pet's fur!";
     }
 }

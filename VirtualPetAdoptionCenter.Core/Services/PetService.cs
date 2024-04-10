@@ -19,7 +19,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
 
         public List<PetModel> GetAllPets()
         {
-            return _dbContext.Pets.ToList();
+            return _dbContext.Pets.Where(x => x.UserId ==null).ToList();
         }
         public void AdoptPet(int petId, int userId)
         {
@@ -40,21 +40,6 @@ namespace VirtualPetAdoptionCenter.Core.Services
         {
             return _dbContext.Pets.FirstOrDefault(p => p.Id == petId);
         }
-
-        public bool FeedPet(int petId)
-        {
-            var pet = _dbContext.Pets.FirstOrDefault(x => x.Id == petId);
-
-            if (pet != null)
-            {
-                pet.FeedCount = pet.FeedCount == null ? 1 : ++pet.FeedCount;
-                _dbContext.SaveChanges();
-                return true;
-                
-            }
-
-            return false;
-        }
         
         public void UpdateGroomingTime(int petId, GroomType groomType)
         {
@@ -72,6 +57,9 @@ namespace VirtualPetAdoptionCenter.Core.Services
                     break;
                 case GroomType.BrushTime:
                     record.BrushTime = DateTime.Now;
+                    break;
+                case GroomType.FeedTime:
+                    record.FeedTime = DateTime.Now;
                     break;
                 default:
                     // 

@@ -10,7 +10,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
 {
     public interface IAchievementService
     {
-        Task CheckAndAddHundredFeedAchievementAsync(int userId);
+        Task CheckAndAddFeedAchievementAsync(int userId);
         Task CheckAndAddAdoptAchievementAsync(int userId);
         Task CheckAndAddEnvironmentAchievementAsync(int petId);
         AchievementModel GetAchivement(int userId);

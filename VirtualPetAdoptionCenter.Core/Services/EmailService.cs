@@ -45,7 +45,6 @@ namespace VirtualPetAdoptionCenter.Core.Services
                 smtpClient.Send(mailMessage);
             }
         }
-
     }
 }
 

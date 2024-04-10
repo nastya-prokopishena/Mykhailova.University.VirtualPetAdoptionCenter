@@ -10,6 +10,7 @@ namespace VirtualPetAdoptionCenter.Models.Enums
     {
         TrimNailsTime = 1,
         WashTime = 2,
-        BrushTime = 3
+        BrushTime = 3,
+        FeedTime = 4
     }
 }

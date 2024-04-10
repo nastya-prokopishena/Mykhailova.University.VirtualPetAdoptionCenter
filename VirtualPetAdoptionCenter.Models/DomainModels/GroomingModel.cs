@@ -13,5 +13,6 @@ namespace VirtualPetAdoptionCenter.Models.DomainModels
         public DateTime TrimNailsTime { get; set; }
         public DateTime WashTime { get; set; }
         public DateTime BrushTime { get; set; }
+        public DateTime FeedTime { get; set; }
     }
 }

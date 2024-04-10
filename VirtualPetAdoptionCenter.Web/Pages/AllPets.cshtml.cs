@@ -35,15 +35,19 @@ namespace VirtualPetAdoptionCenter.Web.Pages
 
                     if (!petCondition.IsWashed)
                     {
-                        _emailService.SendEmail(user.Login, Constants.Washed);
+                        _emailService.SendEmail(user.Login, Constants.WashedEmail);
                     }
                     if (!petCondition.IsBrushed)
                     {
-                        _emailService.SendEmail(user.Login, Constants.Brush);
+                        _emailService.SendEmail(user.Login, Constants.BrushEmail);
                     }
                     if (!petCondition.IsNailTrimmed)
                     {
-                        _emailService.SendEmail(user.Login, Constants.TrimNails);
+                        _emailService.SendEmail(user.Login, Constants.TrimNailsEmail);
+                    }
+                    if (!petCondition.IsFeed)
+                    {
+                        _emailService.SendEmail(user.Login, Constants.FeedEmail);
                     }
                 }
             }

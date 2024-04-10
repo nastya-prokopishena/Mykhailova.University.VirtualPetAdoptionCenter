@@ -30,19 +30,19 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
             return RedirectToPage("/AllPets");
         }
 
-        [HttpPost]
+    /*    [HttpPost]
         [Route(nameof(FeedPet))]
         public async Task<IActionResult> FeedPet([FromForm] int petId, [FromForm] int userId)
         {
             var isFeed = _petService.FeedPet(petId);
 
-            if(isFeed)
+            if (isFeed)
             {
                 await _achievementTypeService.CheckAndAddHundredFeedAchievementAsync(userId);
             }
            
             return RedirectToPage("/MyPets");
-        }
+        }*/
 
         [HttpGet]
         [Route(nameof(GroomPet))]
@@ -81,6 +81,19 @@ namespace VirtualPetAdoptionCenter.Web.Controllers
             return Ok(environment);
         }
 
+        [HttpGet]
+        [Route(nameof(PetActivity))]
+        public IActionResult PetActivity([FromForm] int petId)
+        {
+            var pet = _petService.GetPetById(petId);
+
+            if (pet == null)
+            {
+                return NotFound();
+            }
+            return RedirectToPage("/PetActivity");
+
+        }
     }
 }
 

@@ -56,6 +56,15 @@ namespace VirtualPetAdoptionCenter.Core.Services
                 petCondition.IsBrushed = false;
             }
 
+            if (record != null && (DateTime.Now - record.FeedTime).TotalHours <= 2)
+            {
+                petCondition.IsFeed = true;
+            }
+            else
+            {
+                petCondition.IsFeed = false;
+            }
+
             return petCondition;
         }
     }

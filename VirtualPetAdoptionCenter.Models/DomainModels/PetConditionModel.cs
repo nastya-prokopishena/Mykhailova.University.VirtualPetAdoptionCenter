@@ -11,5 +11,6 @@ namespace VirtualPetAdoptionCenter.Models.DomainModels
         public bool IsNailTrimmed { get; set; }
         public bool IsBrushed { get; set; }
         public bool IsWashed { get; set; }
+        public bool IsFeed { get; set; }
     }
 }

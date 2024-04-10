@@ -14,7 +14,6 @@ namespace VirtualPetAdoptionCenter.Core.Services
         List<PetModel> GetAllPets();
         void AdoptPet(int petId, int userId);
         List<PetModel> GetPetsByUserId(int userId);
-        bool FeedPet(int petId);
         PetModel GetPetById(int petId);
         void UpdateGroomingTime(int petId, GroomType groomType);
         void SetEnvironment(int petId, PetEnvironmentType EnvironmentType);

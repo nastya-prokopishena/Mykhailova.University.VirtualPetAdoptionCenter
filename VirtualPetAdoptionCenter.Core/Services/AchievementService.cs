@@ -16,14 +16,12 @@ namespace VirtualPetAdoptionCenter.Core.Services
         {
             _dbContext = dbContext;
         }
-        public async Task CheckAndAddHundredFeedAchievementAsync(int userId)
+        public async Task CheckAndAddFeedAchievementAsync(int userId)
         {
-            var feedCount = await _dbContext.Pets
-                .Where(p => p.UserId == userId)
-                .Select(p => p.FeedCount)
-                .FirstOrDefaultAsync();
+            var hasFeedingRecords = await _dbContext.Pets
+                .AnyAsync(p => p.UserId == userId);
 
-            if (feedCount >= 5)
+            if (hasFeedingRecords)
             {
                 var existingAchievement = await _dbContext.Achievements.FirstOrDefaultAsync(u => u.UserId == userId);
 
@@ -50,7 +48,7 @@ namespace VirtualPetAdoptionCenter.Core.Services
                     existingAchievement.Feed = 1;
                     await _dbContext.SaveChangesAsync();
                 }
-            }
+            }           
         }
 
         public async Task CheckAndAddAdoptAchievementAsync(int userId)
