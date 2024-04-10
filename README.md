@@ -79,3 +79,18 @@ The application uses a relational database managed by Entity Framework. The `Vir
 - Create UI components for pet health monitoring and status display.
 - Write unit tests for grooming and interactive activity features.
 - Begin documentation for getting started and project architecture.✔️
+
+### Week 4:
+- Implement virtual environment customization options. ✔️
+- Develop community interaction features, including forums and chat functionality.
+- Integrate achievement and rewards system based on user interactions. ✔️
+- Write unit tests for virtual environment customization and community interaction features.
+- Continue documentation for project architecture and tasks decomposition.
+
+### Week 5:
+- Implement notification system for users to receive updates and alerts. ✔️
+- Develop support center with ticketing system for user assistance.
+- Design and implement admin panel for managing pet listings and user accounts.
+- Write unit tests for notification system and support center features.
+- Complete documentation for project architecture and tasks decomposition.
+
