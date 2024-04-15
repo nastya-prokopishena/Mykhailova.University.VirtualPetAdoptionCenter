@@ -56,6 +56,10 @@ The `Groomservice` is responsible for managing the grooming activities of pets i
 The application uses a relational database managed by Entity Framework. The `VirtualPetAdoptionCenterDbContext` class is responsible for interacting with the database. The database schema is defined by the `UserModel` class.
 
 
+### Future feature
+Pet Trade: You can trade pets with other users. When you click on the button, you will have the opportunity to choose which pet you want to get, but at the same time you will need to offer your pet.
+Pet Return: Allows you to return your pet. When you click the button, your pet will disappear from the list of your pets
+
 
 ## Project Task Decomposition
 
@@ -93,4 +97,19 @@ The application uses a relational database managed by Entity Framework. The `Vir
 - Design and implement admin panel for managing pet listings and user accounts.
 - Write unit tests for notification system and support center features.
 - Complete documentation for project architecture and tasks decomposition.
+
+### Week 6:
+- Perform integration testing for all implemented features.
+- Conduct user acceptance testing to gather feedback and identify any necessary improvements.
+- Address any bugs or issues discovered during testing phase.
+- Finalize documentation for getting started and project architecture.✔️
+- Prepare for project deployment to production environment.
+
+### Week 7:
+- Deploy project to Azure production environment. ✔️
+- Perform final testing and validation in production environment.
+- Monitor system performance and address any deployment-related issues.
+- Prepare for project launch and promotion.
+- Begin planning for future feature enhancements and updates. ✔️
+
 
