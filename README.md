@@ -60,6 +60,9 @@ The application uses a relational database managed by Entity Framework. The `Vir
 Pet Trade: You can trade pets with other users. When you click on the button, you will have the opportunity to choose which pet you want to get, but at the same time you will need to offer your pet.
 Pet Return: Allows you to return your pet. When you click the button, your pet will disappear from the list of your pets
 
+### Project architecture diagram
+
+![projectdiagram drawio](https://github.com/REPS0LL/Mykhailova.University.VirtualPetAdoptionCenter/assets/161017521/df90499d-2ca7-4376-8bcb-7bdbf7ec9896)
 
 ## Project Task Decomposition
 
