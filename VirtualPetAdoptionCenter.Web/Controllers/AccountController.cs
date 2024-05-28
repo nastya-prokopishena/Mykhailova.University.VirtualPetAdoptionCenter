@@ -90,7 +90,7 @@ public class AccountController : ControllerBase
         if (user != null)
         {
             HttpContext.Session.SetInt32(Constants.UserCookieKey, user.Id);
-            return RedirectToPage("/AllPets"); // Redirect to AllPets action.
+            return RedirectToPage("/AllPets"); // Redirect to AllPets action
         }
         else
         {
