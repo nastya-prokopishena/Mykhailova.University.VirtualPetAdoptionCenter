@@ -56,6 +56,9 @@ The `Groomservice` is responsible for managing the grooming activities of pets i
 The application uses a relational database managed by Entity Framework. The `VirtualPetAdoptionCenterDbContext` class is responsible for interacting with the database. The database schema is defined by the `UserModel` class.
 
 
+![333333](https://github.com/REPS0LL/Mykhailova.University.VirtualPetAdoptionCenter/assets/161017521/e795244a-2770-4eac-81b7-13e4be51df83)
+
+
 
 ## Project Task Decomposition
 
@@ -71,7 +74,7 @@ The application uses a relational database managed by Entity Framework. The `Vir
 - Integrate email sending functionality for welcome messages upon successful registration.✔️
 - Design and implement feeding and nutrition features for virtual pets.✔️
 - Set up continuous integration and continuous delivery pipeline in Azure DevOps.
-- Write unit tests for virtual pet adoption and feeding functionality.
+- Write unit tests for virtual pet adoption and feeding functionality. ✔️
 
 ### Week 3:
 - Develop grooming and care features for virtual pets. ✔️
@@ -79,3 +82,32 @@ The application uses a relational database managed by Entity Framework. The `Vir
 - Create UI components for pet health monitoring and status display.
 - Write unit tests for grooming and interactive activity features.
 - Begin documentation for getting started and project architecture.✔️
+
+### Week 4:
+- Implement virtual environment customization options. ✔️
+- Develop community interaction features, including forums and chat functionality.
+- Integrate achievement and rewards system based on user interactions. ✔️
+- Write unit tests for virtual environment customization and community interaction features.
+- Continue documentation for project architecture and tasks decomposition. ✔️
+
+### Week 5:
+- Implement notification system for users to receive updates and alerts. ✔️
+- Develop support center with ticketing system for user assistance.
+- Design and implement admin panel for managing pet listings and user accounts.
+- Write unit tests for notification system and support center features.
+- Complete documentation for project architecture and tasks decomposition. ✔️
+
+### Week 6:
+- Perform integration testing for all implemented features.
+- Conduct user acceptance testing to gather feedback and identify any necessary improvements.
+- Address any bugs or issues discovered during testing phase.
+- Finalize documentation for getting started and project architecture.✔️
+- Prepare for project deployment to production environment.
+
+### Week 7:
+- Deploy project to Azure production environment. ✔️
+- Perform final testing and validation in production environment.
+- Monitor system performance and address any deployment-related issues.
+- Prepare for project launch and promotion.
+- Begin planning for future feature enhancements and updates. ✔
+
